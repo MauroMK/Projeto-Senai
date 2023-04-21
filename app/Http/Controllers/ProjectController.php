@@ -22,7 +22,7 @@ class ProjectController extends Controller
         $project = new Project();
         $project->fill($request->all());
         $project->save();
-        $request->session()->flash('success', 'O projeto foi salvo com sucesso.');
+        $request->session()->flash('success', 'Tarefa ' . $project->id . ' foi criada com sucesso.');
         return redirect()->route('project.list');
     }
 

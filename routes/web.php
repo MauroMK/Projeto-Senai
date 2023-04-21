@@ -15,11 +15,12 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->middleware('auth')->name('home');
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->middleware('auth')->name('home');
+Route::get('/', [App\Http\Controllers\ProjectController::class, 'list'])->middleware('auth')->name('home');
+Route::get('/home', [App\Http\Controllers\ProjectController::class, 'list'])->middleware('auth')->name('home');
+
 Route::middleware(['auth'])->prefix('project')->group(function(){
-    Route::get('/new', [App\Http\Controllers\ProjectController::class, 'insert'])->name('project.insert');
     Route::get('/', [App\Http\Controllers\ProjectController::class, 'list'])->name('project.list');
+    Route::get('/new', [App\Http\Controllers\ProjectController::class, 'insert'])->name('project.insert');
     Route::post('/store', [App\Http\Controllers\ProjectController::class, 'store'])->name('project.store');
     Route::get('/{project}', [App\Http\Controllers\ProjectController::class, 'edit'])->name('project.edit');
     Route::put('/{project}', [App\Http\Controllers\ProjectController::class, 'update'])->name('project.update');
