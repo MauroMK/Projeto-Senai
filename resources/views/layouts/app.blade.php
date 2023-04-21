@@ -83,41 +83,12 @@
                                     {{ __('Logout') }}
                                  </a>
                             </li>
-                            <div class="dropdown">
-                                <a class="btn dropdown-toggle me-1" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Project
-                                </a>
-                                <ul class="dropdown-menu">
-                                <li class="navbar-nav">
-                                    <a class="dropdown-item" href="{{ route('project.insert') }}">
-                                        {{ __('Add project') }}
-                                    </a>
-                                </li>
-                                <li class="navbar-nav">
-                                    <a class="dropdown-item" href="{{ route('project.list') }}">
-                                        {{ __('List projects') }}
-                                    </a>
-                                </li>
-                                </ul>
-                            </div>
-                            <div class="dropdown">
-                                <a class="btn dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    User
-                                </a>
-                                <ul class="dropdown-menu">
-                                <li class="navbar-nav">
-                                    <a class="dropdown-item" href="{{ route('user.insert') }}">
-                                        {{ __('Add user') }}
-                                    </a>
-                                </li>
                                 <li class="navbar-nav">
                                     <a class="dropdown-item" href="{{ route('user.list') }}">
                                         {{ __('List users') }}
                                     </a>
                                 </li>
-                                </ul>
-                            </div>
-                            
+                            </li>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                 @csrf
                             </form>

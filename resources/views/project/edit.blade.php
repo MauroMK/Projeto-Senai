@@ -4,9 +4,15 @@
 <script src="https://cdn.tiny.cloud/1/nk3yxbzaul8fgfj9d0fl1xn225z7ggyzpibcs8zo79nyn0wv/tinymce/6/tinymce.min.js"></script>
     <script>
       tinymce.init({
-        selector: 'textarea',
+        selector: '#descricao',
         readonly: true
       });
+
+      tinymce.init({
+        selector: '#observacao',
+        readonly: {{ $project->user_id == auth()->user()->id && $project->situacao == 'situacao' ? 'false' : 'true' }}
+      });
+
     </script>
 <div class="card mx-auto">
     <div class="card-body">
@@ -27,11 +33,11 @@
                         <label for="name">Título</label>
                         <input class="form-control form-control-lg" value="{{ $project->name }}" type="text" id="name" name="name" readonly/>
                     </div>
-                    <div class="col-md-1">
+                    <div class="col-md-2">
                         <label for="tipo">Tipo: </label>
                         <h4>{{ $project->tipo }}</h4>
                     </div>
-                    <div class="col-md-1">
+                    <div class="col-md-2">
                         <label for="prioridade">Prioridade: </label>
                         <h4>{{ $project->prioridade }}</h4>
                     </div>
@@ -53,19 +59,31 @@
                         <label for="descricao" class="form-label">Descrição</label>
                         <textarea class="form-control form-control-lg" name="descricao" id="descricao">{{ $project->descricao }}</textarea>
                     </div>
-                    <div class="col-md-5">
+                    <div class="col-md-4">
                         <label for="observacao" class="form-label">Observação</label>
                         <textarea class="form-control form-control-lg" name="observacao" id="observacao">{{ $project->observacao }}</textarea>
                     </div>
+                    <div class="col d-flex flex-column justify-content-center">
+                        <p class="align-self-start">Usuário: </p>
+                        <p class="align-self-start"></p>
+                    </div>
                 </div>
-                <div class="pt-3">
-                    <button class="btn btn-success btn-lg" type="submit">Salvar</button>
-                </div>            
-                @method('put')
-            </form>
-                @if ($project->situacao && $project->user_id == auth()->user()->id)
-                    <a href="{{ route('project.finishForm', $project->id) }}" class="btn btn-primary">Finalizar Tarefa</a>
-                @endif
+                <div class="row">
+                    <div class="col-md-1 pt-2">
+                        @if ($project->situacao && $project->user_id == auth()->user()->id)
+                        <button class="btn btn-success btn-lg" type="submit">Salvar</button>
+                        @else
+                        <button class="btn btn-success btn-lg" type="submit" disabled>Salvar</button>
+                        @endif
+                    </div>
+                    @method('put')
+                    <div class="col-md-1 pt-2">
+                        @if ($project->situacao && $project->user_id == auth()->user()->id)
+                            <a href="{{ route('project.finishForm', $project->id) }}" class="btn btn-primary btn-lg">Finalizar</a>
+                        @endif
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

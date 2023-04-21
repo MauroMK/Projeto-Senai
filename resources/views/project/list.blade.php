@@ -4,7 +4,12 @@
 <div class="card mx-auto">
     <div class="card-body">
         <div class="card-title">
-            <h2>Lista de Tarefas</h2>
+            <div class="row">
+                <h2 class="col">Lista de Tarefas</h2>
+                <div class="col-m-2 pt-2">
+                    <a href="{{ route('project.insert') }}" class="btn btn-primary btn-lg">Criar Tarefa</a>
+                </div>
+            </div>
         </div>
         <div class="card-text">
             <table class="table">

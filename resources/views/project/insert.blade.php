@@ -43,11 +43,11 @@
                 <div class="row">
                     <div class="col-md-6">
                         <label for="descricao" class="form-label">Descrição</label>
-                        <textarea class="form-control form-control-lg" name="descricao" id="descricao" cols="10" rows="5"></textarea>
+                        <textarea class="form-control form-control-lg" name="descricao" id="descricao" maxlength="255"></textarea>
                     </div>
                 </div>
                 <div class="pt-3">
-                    <button class="btn btn-success btn-lg" type="submit">Enviar</button>
+                    <button class="btn btn-success btn-lg" type="submit">Criar</button>
                 </div>
             </form>
         </div>
