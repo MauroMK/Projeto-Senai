@@ -11,33 +11,29 @@
                 <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Nome</th>
+                        <th scope="col">Título</th>
                         <th scope="col">Tipo</th>
                         <th scope="col">Prioridade</th>
                         <th scope="col">Data de abertura</th>
                         <th scope="col">Responsável</th>
-                        <th scope="col">Ação</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach($projects as $project)
-                    <tr>
-                        <th scope="row">{{ $project->id }}</th>
+                    <tr class="{{ $project->user_id == auth()->user()->id ? 'bg-warning' : '' }}">
+                        <th scope="row">
+                            <a href="{{ route('project.edit', $project->id) }}">
+                                {{ $project->id }}
+                            </a>
                             <td>{{ $project->name }}</td>
                             <td>{{ $project->tipo }}</td>
                             <td>{{ $project->prioridade }}</td>
                             <td>{{ $project->created_at->format('d/m/Y') }}</td>
                             <td>{{ $project->user->name }}</td>
                             
-                            <td>
-                                <a class="btn btn-warning" href="{{ route('project.edit', $project->id) }}">
-                                    <i class="fa-regular fa-pen-to-square"></i>
-                                </a>
-                                <a class="btn btn-success" href="{{ route('task.insert', $project->id) }}">
-                                    <i class="fa-solid fa-plus"></i>
-                                </a>
-                                <a class="btn btn-primary" href="{{ route('task.list', $project->id) }}">
-                                    <i class="fa-solid fa-list"></i>
+                            <!-- <td>
+                                <a class="btn btn-secondary" href="{{ route('project.edit', $project->id) }}">
+                                    <i class="fa-solid fa-magnifying-glass"></i>
                                 </a>
                                 <form class="d-inline" method="post" action="{{route('project.delete', $project->id)}}">
                                     @csrf
@@ -46,11 +42,12 @@
                                     </button>
                                     @method('delete')    
                                 </form>
-                            </td>
+                            </td> -->
                     </tr>
                     @endforeach
                 </tbody>
             </table>
+            {{ $projects->links() }}
         </div>
     </div>
 </div>

@@ -21,14 +21,17 @@ class ProjectController extends Controller
     public function store(ProjectPostRequest $request) {
         $project = new Project();
         $project->fill($request->all());
+        $project->user_id = auth()->user()->id;
         $project->save();
         $request->session()->flash('success', 'Tarefa ' . $project->id . ' foi criada com sucesso.');
         return redirect()->route('project.list');
     }
 
     public function list(Request $request) {
-        $projects = Project::with("user")->orderBy('id', 'DESC')->get();
-        return view('project.list', ['projects'=>$projects]);
+        $perPage = 10;
+        $userId = auth()->user()->id;
+        $projects = Project::with("user")->orderBy('id', 'DESC')->simplePaginate($perPage);
+        return view('project.list', ['projects'=>$projects, 'userID'=>$userId]);
     }
 
     public function edit(Request $request, Project $project) {
@@ -40,13 +43,13 @@ class ProjectController extends Controller
         $validated = $request->validated();
         $project->fill($request->all());
         $project->update();
-        $request->session()->flash('success', 'O projeto foi editado com sucesso.');
+        $request->session()->flash('success', 'A tarefa foi editada com sucesso.');
         return redirect()->route('project.list');
     }
 
     public function delete(Request $request, Project $project) {
         $project->delete();
-        $request->session()->flash('success', 'O projeto foi deletado com sucesso.');
+        $request->session()->flash('success', 'A tarefa foi excluída com sucesso.');
         return redirect()->route('project.list');
     }
 

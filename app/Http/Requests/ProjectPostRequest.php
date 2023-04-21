@@ -27,7 +27,7 @@ class ProjectPostRequest extends FormRequest
             'name' => 'required',
             'tipo' => 'required',
             'prioridade' => 'required',
-            'user_id' => 'required',
+            'observation' => 'required'
         ];
     }
 
@@ -35,7 +35,7 @@ class ProjectPostRequest extends FormRequest
     {
         return [
             'name.required' => 'O campo nome é de preenchimento obrigatório.',
-            'start_date.required' => 'A data inicial é de preenchimento obrigatório.',
+            'observation' => 'O campo de descrição é de preenchimento obrigatório'
         ];
     }
 

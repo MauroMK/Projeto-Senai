@@ -14,7 +14,7 @@
                         <th scope="col">Nome</th>
                         <th scope="col">Email</th>
                         <th scope="col">Data de criação</th>
-                        <th scope="col w-100">Ação</th>
+                        <!-- <th scope="col w-100">Ação</th> -->
                     </tr>
                 </thead>
                 <tbody>
@@ -24,7 +24,7 @@
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->created_at->format('d/m/Y') }}</td>
-                        <td>
+                        <!-- <td>
                             <form method="post" action="{{route('user.delete', $user->id)}}">
                                 <a class="btn btn-primary m-1" href="{{ route('user.edit', $user->id) }}">
                                     <i class="fa-solid fa-user-pen"></i>
@@ -33,7 +33,7 @@
                                 <button value="Delete" type="submit" class="btn btn-danger m-1"><i class="fa-solid fa-trash-can"></i></button>
                                 @method('delete')    
                             </form>
-                        </td>
+                        </td> -->
                     </tr>
                     @endforeach
                 </tbody>

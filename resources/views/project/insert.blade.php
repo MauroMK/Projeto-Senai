@@ -4,7 +4,7 @@
 <div class="card mx-auto">
     <div class="card-body">
         <div class="card-title">
-            <h2><a class ="btn btn-primary" href="{{ route('project.list') }}"><i class="fa-solid fa-left-long"></i></a> Inserir Projeto</h2>
+            <h2><a class ="btn btn-primary" href="{{ route('project.list') }}"><i class="fa-solid fa-left-long"></i></a> Inserir Tarefa</h2>
         </div>
         <div class="card-text">
                 
@@ -12,7 +12,7 @@
                 @csrf
                 <div class="row">
                     <div class="col-md-4">
-                        <label for="name">Nome</label>
+                        <label for="name">Título</label>
                         <input class="form-control form-control-lg" type="text" id="name" name="name" />
                         <div class="valid-feedback">
                             Looks good!
@@ -38,14 +38,7 @@
                     </div>
                 </div>
                 <div>
-                    <div class="col-md-3">
-                        <label for="user_id">Responsável</label>
-                        <select class="form-select form-select-lg" name="user_id" id="user_id" >
-                            @foreach($users as $user)
-                            <option value="{{ $user->id }}">{{ $user->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
+                    
                 </div>
                 <div class="row">
                     <div class="col-md-6">

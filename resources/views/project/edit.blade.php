@@ -1,6 +1,13 @@
 @extends("layouts.app")
 
 @section('content')
+<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js"></script>
+    <script>
+      tinymce.init({
+        selector: 'textarea',
+        readonly: true
+      });
+    </script>
 <div class="card mx-auto">
     <div class="card-body">
         <div class="card-title">
@@ -11,7 +18,7 @@
                 @csrf
                 <div class="row">
                     <div class="col-md-3">
-                        <label for="name">Nome</label>
+                        <label for="name">Título</label>
                         <h2> {{ $project->name }} </h2>
                     </div>
                     <div class="col-md-2">
@@ -41,7 +48,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <label for="observation" class="form-label">Descrição</label>
-                        <textarea class="form-control form-control-lg" name="observation" id="observation" cols="10" rows="4" readonly>{{ $project->observation }}</textarea>
+                        <textarea class="form-control form-control-lg" name="observation" id="observation">{{ $project->observation }}</textarea>
                     </div>
                 </div>
                 <div class="row">
