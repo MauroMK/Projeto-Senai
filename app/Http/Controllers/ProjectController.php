@@ -62,7 +62,7 @@ class ProjectController extends Controller
     public function finish(ProjectPostRequest $request, Project $project) {
         $validated = $request->validated();
         $project->situacao = false;
-        $project->observation = $validated['observation'];
+        $project->descricao = $validated['descricao'];
         $project->save();
         $request->session()->flash('success', 'A tarefa foi finalizada com sucesso.');
         return redirect()->route('project.list');

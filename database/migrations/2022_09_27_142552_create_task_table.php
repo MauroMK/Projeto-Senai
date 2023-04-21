@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string("name", 255);
             $table->bigInteger("project_id");
             $table->boolean("status");
-            $table->text("observation");
+            $table->text("descricao");
             $table->bigInteger("user_id");
             $table->date("start_date");
             $table->date("end_date");

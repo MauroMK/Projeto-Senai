@@ -44,8 +44,8 @@
                     </div>
                 </div>
                     <div class="col-md-6">
-                        <label for="observation" class="form-label">Descrição</label>
-                        <textarea class="form-control form-control-lg" name="observation" id="observation" cols="10" rows="5"></textarea>
+                        <label for="descricao" class="form-label">Descrição</label>
+                        <textarea class="form-control form-control-lg" name="descricao" id="descricao" cols="10" rows="5"></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary">Finalizar Tarefa</button>
                     @method('put')

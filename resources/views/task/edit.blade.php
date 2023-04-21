@@ -17,8 +17,8 @@
                     <div>
                     <div class="row">
                         <div class="col-md-12">
-                            <label for="observation" class="form-label">Descrição</label>
-                            <textarea class="form-control form-control-lg" name="observation" id="observation" cols="15" rows="2">{{ $task->observation }}</textarea>
+                            <label for="descricao" class="form-label">Descrição</label>
+                            <textarea class="form-control form-control-lg" name="descricao" id="descricao" cols="15" rows="2">{{ $task->descricao }}</textarea>
                         </div>
                     </div>
                     <div class="col-md-4">

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->timestamps();
             $table->string("name", 255);
             $table->boolean("status");
-            $table->text("observation");
+            $table->text("descricao");
             $table->bigInteger("user_id");
             $table->date("start_date");
             $table->date("end_date");

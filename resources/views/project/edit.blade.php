@@ -27,33 +27,35 @@
                         <label for="name">Título</label>
                         <input class="form-control form-control-lg" value="{{ $project->name }}" type="text" id="name" name="name" readonly/>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-1">
                         <label for="tipo">Tipo: </label>
-                        <h3>{{ $project->tipo }}</h3>
+                        <h4>{{ $project->tipo }}</h4>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-1">
                         <label for="prioridade">Prioridade: </label>
-                        <h3>{{ $project->prioridade }}</h3>
+                        <h4>{{ $project->prioridade }}</h4>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-1">
                         <label for="start_date">Data de criação</label>
-                        <h3>{{ $project->created_at->format('d/m/Y') }}</h3>
+                        <h4>{{ $project->created_at->format('d/m/Y') }}</h4>
                     </div>
-                </div>
-                <div>
-                    <div class="col-md-3">
+                    <div class="col-md-1">
                         <label for="user_id">Responsável</label>
-                        <h2>{{ $project->user->name }}</h2>
+                        <h4>{{ $project->user->name }}</h4>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-1">
                         <label for="situacao">Situação</label>
-                        <h2>{{ $project->situacao ? "Aberta" : "Concluída" }}</h2>
+                        <h4>{{ $project->situacao ? "Aberta" : "Concluída" }}</h4>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-6">
-                        <label for="observation" class="form-label">Descrição</label>
-                        <textarea class="form-control form-control-lg" name="observation" id="observation">{{ $project->observation }}</textarea>
+                    <div class="col-md-5">
+                        <label for="descricao" class="form-label">Descrição</label>
+                        <textarea class="form-control form-control-lg" name="descricao" id="descricao">{{ $project->descricao }}</textarea>
+                    </div>
+                    <div class="col-md-5">
+                        <label for="descricao" class="form-label">Observação</label>
+                        <textarea class="form-control form-control-lg" name="descricao" id="descricao">{{ $project->descricao }}</textarea>
                     </div>
                 </div>
                 <div class="pt-3">

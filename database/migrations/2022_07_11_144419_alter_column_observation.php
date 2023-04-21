@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::table('projects', function($table)
         {
-            $table->string('observation')->nullable()->change();
+            $table->string('descricao')->nullable()->change();
         });
     }
 
