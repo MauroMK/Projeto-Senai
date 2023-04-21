@@ -12,11 +12,11 @@ class Project extends Model
     protected $table = "projects";
     protected $fillable = [
         "name",
-        "tipo",
-        "prioridade",
         "observation",
         "user_id",
-        "start_date"];
+        "tipo",
+        "prioridade",
+        "situacao",];
 
     public function user()
     {

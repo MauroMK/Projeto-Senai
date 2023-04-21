@@ -25,8 +25,6 @@ class ProjectPostRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'tipo' => 'required',
-            'prioridade' => 'required',
             'observation' => 'required'
         ];
     }

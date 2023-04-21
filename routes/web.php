@@ -22,7 +22,10 @@ Route::middleware(['auth'])->prefix('project')->group(function(){
     Route::get('/', [App\Http\Controllers\ProjectController::class, 'list'])->name('project.list');
     Route::get('/new', [App\Http\Controllers\ProjectController::class, 'insert'])->name('project.insert');
     Route::post('/store', [App\Http\Controllers\ProjectController::class, 'store'])->name('project.store');
+    Route::post('/{project}', [App\Http\Controllers\ProjectController::class, 'assignToMe'])->name('project.assignToMe');
     Route::get('/{project}', [App\Http\Controllers\ProjectController::class, 'edit'])->name('project.edit');
+    Route::put('/{project}/finish', [App\Http\Controllers\ProjectController::class, 'finish'])->name('project.finish');
+    Route::get('/{project}/finishForm', [App\Http\Controllers\ProjectController::class, 'finishForm'])->name('project.finishForm');
     Route::put('/{project}', [App\Http\Controllers\ProjectController::class, 'update'])->name('project.update');
     Route::delete('/{project}', [App\Http\Controllers\ProjectController::class, 'delete'])->name('project.delete');
 });

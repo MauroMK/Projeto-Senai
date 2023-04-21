@@ -21,7 +21,7 @@ class ProjectController extends Controller
     public function store(ProjectPostRequest $request) {
         $project = new Project();
         $project->fill($request->all());
-        $project->user_id = auth()->user()->id;
+        $project->user_id = auth()->user()->id;  // Pega o id do usuário logado
         $project->save();
         $request->session()->flash('success', 'Tarefa ' . $project->id . ' foi criada com sucesso.');
         return redirect()->route('project.list');
@@ -29,7 +29,7 @@ class ProjectController extends Controller
 
     public function list(Request $request) {
         $perPage = 10;
-        $userId = auth()->user()->id;
+        $userId = auth()->user()->id;           // Armazena o id do usuário logado
         $projects = Project::with("user")->orderBy('id', 'DESC')->simplePaginate($perPage);
         return view('project.list', ['projects'=>$projects, 'userID'=>$userId]);
     }
@@ -44,6 +44,27 @@ class ProjectController extends Controller
         $project->fill($request->all());
         $project->update();
         $request->session()->flash('success', 'A tarefa foi editada com sucesso.');
+        return redirect()->route('project.list');
+    }
+
+    public function assignToMe(Request $request, Project $project) {
+        $project->user_id = auth()->user()->id;
+        $project->save();
+        $request->session()->flash('success', 'A tarefa foi atribuída a você.');
+        return back();
+    }
+
+    public function finishForm(Project $project)
+    {
+        return view('project.finish', compact('project'));
+    }
+
+    public function finish(ProjectPostRequest $request, Project $project) {
+        $validated = $request->validated();
+        $project->situacao = false;
+        $project->observation = $validated['observation'];
+        $project->save();
+        $request->session()->flash('success', 'A tarefa foi finalizada com sucesso.');
         return redirect()->route('project.list');
     }
 
