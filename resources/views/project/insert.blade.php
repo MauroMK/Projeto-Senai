@@ -7,6 +7,7 @@
             <h2><a class ="btn btn-primary" href="{{ route('project.list') }}"><i class="fa-solid fa-left-long"></i></a> Inserir Projeto</h2>
         </div>
         <div class="card-text">
+                
             <form method="POST" action="/project/store" class="row needs-validation" novalidate>
                 @csrf
                 <div class="row">
@@ -47,9 +48,9 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-12">
-                        <label for="observation" class="form-label">Observação</label>
-                        <textarea class="form-control form-control-lg" name="observation" id="observation" cols="15" rows="2"></textarea>
+                    <div class="col-md-6">
+                        <label for="observation" class="form-label">Descrição</label>
+                        <textarea class="form-control form-control-lg" name="observation" id="observation" cols="10" rows="5"></textarea>
                     </div>
                 </div>
                 <div class="pt-3">

@@ -10,17 +10,21 @@
             <form method="POST" action="{{ route('project.update', $project->id) }}">
                 @csrf
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <label for="name">Nome</label>
                         <h2> {{ $project->name }} </h2>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-2">
                         <label for="tipo">Tipo: </label>
                         <h3>{{ $project->tipo }}</h3>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-2">
                         <label for="prioridade">Prioridade: </label>
                         <h3>{{ $project->prioridade }}</h3>
+                    </div>
+                    <div class="col-md-2">
+                        <label for="start_date">Data de criação</label>
+                        <h3>{{ $project->created_at->format('d/m/Y') }}</h3>
                     </div>
                 </div>
                 <div>
@@ -35,17 +39,12 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-12">
-                        <label for="observation" class="form-label">Observação</label>
-                        <textarea class="form-control form-control-lg"  name="observation" id="observation" cols="15" rows="2">{{ $project->observation }}</textarea>
+                    <div class="col-md-6">
+                        <label for="observation" class="form-label">Descrição</label>
+                        <textarea class="form-control form-control-lg" name="observation" id="observation" cols="10" rows="4" readonly>{{ $project->observation }}</textarea>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-2">
-                        <label for="start_date">Início</label>
-                        <input class ="form-control form-control-lg"type="date" value="{{ $project->start_date->format('Y-m-d') }}" id="start_date" name="start_date" disabled/>
-                    </div>
-                
                     
                 </div>
                 <div class="pt-3">

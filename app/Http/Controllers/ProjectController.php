@@ -27,7 +27,7 @@ class ProjectController extends Controller
     }
 
     public function list(Request $request) {
-        $projects = Project::with("user")->orderBy('id', 'ASC')->get();
+        $projects = Project::with("user")->orderBy('id', 'DESC')->get();
         return view('project.list', ['projects'=>$projects]);
     }
 
