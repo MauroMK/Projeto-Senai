@@ -30,19 +30,6 @@
                             <td>{{ $project->prioridade }}</td>
                             <td>{{ $project->created_at->format('d/m/Y') }}</td>
                             <td>{{ $project->user->name }}</td>
-                            
-                            <!-- <td>
-                                <a class="btn btn-secondary" href="{{ route('project.edit', $project->id) }}">
-                                    <i class="fa-solid fa-magnifying-glass"></i>
-                                </a>
-                                <form class="d-inline" method="post" action="{{route('project.delete', $project->id)}}">
-                                    @csrf
-                                    <button value="Delete" type="submit" class="btn btn-danger">
-                                        <i class="fa-solid fa-trash-can"></i>
-                                    </button>
-                                    @method('delete')    
-                                </form>
-                            </td> -->
                     </tr>
                     @endforeach
                 </tbody>

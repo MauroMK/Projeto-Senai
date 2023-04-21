@@ -30,7 +30,7 @@ class ProjectController extends Controller
     public function list(Request $request) {
         $perPage = 10;
         $userId = auth()->user()->id;           // Armazena o id do usuário logado
-        $projects = Project::with("user")->orderBy('id', 'DESC')->simplePaginate($perPage);
+        $projects = Project::where('situacao', true)->with("user")->orderBy('id', 'DESC')->simplePaginate($perPage);
         return view('project.list', ['projects'=>$projects, 'userID'=>$userId]);
     }
 
