@@ -54,8 +54,8 @@
                         <textarea class="form-control form-control-lg" name="descricao" id="descricao">{{ $project->descricao }}</textarea>
                     </div>
                     <div class="col-md-5">
-                        <label for="descricao" class="form-label">Observação</label>
-                        <textarea class="form-control form-control-lg" name="descricao" id="descricao">{{ $project->descricao }}</textarea>
+                        <label for="observacao" class="form-label">Observação</label>
+                        <textarea class="form-control form-control-lg" name="observacao" id="observacao">{{ $project->observacao }}</textarea>
                     </div>
                 </div>
                 <div class="pt-3">

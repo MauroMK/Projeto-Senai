@@ -13,9 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('projects', function(Blueprint $table)
-        {
-            $table->string("tipo")->nullable(false)->change;
+        Schema::table('observations', function (Blueprint $table) {
+            $table->unique('observacao');
         });
     }
 

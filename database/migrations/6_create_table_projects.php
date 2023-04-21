@@ -17,11 +17,13 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->string("name", 255);
-            $table->boolean("status");
-            $table->text("descricao");
+            $table->string("tipo");
+            $table->string("prioridade");
+            $table->boolean("situacao")->default(true);
+            $table->text("descricao")->nullable();
+            $table->text("observacao_id")->nullable();
+            $table->foreign('observacao_id')->references('observacao')->on('observations');
             $table->bigInteger("user_id");
-            $table->date("start_date");
-            $table->date("end_date");
             $table->foreign('user_id')->references('id')->on('users');
         });
     }
