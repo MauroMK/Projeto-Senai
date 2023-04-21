@@ -42,7 +42,9 @@ class ProjectController extends Controller
     public function update(ProjectPostRequest $request, Project $project) {
         $validated = $request->validated();
         $project->fill($request->all());
-        $project->created_at = now();
+        $project->data_alteracao = now();
+        $project->responsavel_alteracao = auth()->user()->name;
+        $project->observacao = $request->observacao;
         $project->user_id = auth()->user()->id;
         $project->update();
         $request->session()->flash('success', 'A tarefa foi editada com sucesso.');

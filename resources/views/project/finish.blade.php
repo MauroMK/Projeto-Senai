@@ -5,7 +5,7 @@
 <script>
     tinymce.init({
         selector: 'textarea',
-        plugins: 'autoresize'
+        
     });
 </script>
 <div class="card mx-auto">
@@ -43,9 +43,10 @@
                         <h4>{{ $project->situacao ? "Aberta" : "Concluída" }}</h4>
                     </div>
                 </div>
-                    <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-5">
                         <label for="descricao" class="form-label">Descrição</label>
-                        <textarea class="form-control form-control-lg" name="descricao" id="descricao"></textarea>
+                        <textarea class="form-control form-control-lg" name="descricao" id="descricao" maxlength="255">{{ $project->descricao }}</textarea>
                     </div>
                         <div class="row">
                             <div class="col-md-1 pt-2">
@@ -54,6 +55,7 @@
                             </div>
                         </div>
                     </div>
+                </div>
                 </form>        
         </div>
     </div>

@@ -21,8 +21,9 @@ return new class extends Migration
             $table->string("prioridade");
             $table->boolean("situacao")->default(true);
             $table->text("descricao")->nullable();
-            $table->text("observacao_id")->nullable();
-            $table->foreign('observacao_id')->references('observacao')->on('observations');
+            $table->text("observacao")->nullable();
+            $table->dateTime("data_alteracao")->nullable();
+            $table->string("responsavel_alteracao", 255)->nullable();
             $table->bigInteger("user_id");
             $table->foreign('user_id')->references('id')->on('users');
         });

@@ -57,15 +57,16 @@
                 <div class="row">
                     <div class="col-md-5">
                         <label for="descricao" class="form-label">Descrição</label>
-                        <textarea class="form-control form-control-lg" name="descricao" id="descricao">{{ $project->descricao }}</textarea>
+                        <textarea class="form-control form-control-lg" name="descricao" id="descricao" maxlength="255">{{ $project->descricao }}</textarea>
                     </div>
                     <div class="col-md-4">
                         <label for="observacao" class="form-label">Observação</label>
-                        <textarea class="form-control form-control-lg" name="observacao" id="observacao">{{ $project->observacao }}</textarea>
+                        <textarea class="form-control form-control-lg" name="observacao" id="observacao" maxlength="255">{{ $project->observacao }}</textarea>
                     </div>
                     <div class="col d-flex flex-column justify-content-center">
-                        <p class="align-self-start">Usuário: </p>
-                        <p class="align-self-start"></p>
+                        <h4 class="align-self-start">Ultima alteração: </h4>
+                        <h5 class="align-self-start">Usuário: {{ $project->responsavel_alteracao}} </h5>
+                        <h5 class="align-self-start">Data: {{ $project->data_alteracao }} </h5>
                     </div>
                 </div>
                 <div class="row">
