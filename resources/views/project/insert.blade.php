@@ -10,7 +10,7 @@
             <form method="POST" action="/project/store" class="row needs-validation" novalidate>
                 @csrf
                 <div class="row">
-                    <div class="col-md-8">
+                    <div class="col-md-4">
                         <label for="name">Nome</label>
                         <input class="form-control form-control-lg" type="text" id="name" name="name" />
                         <div class="valid-feedback">
@@ -18,10 +18,21 @@
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <label for="status">Status</label>
-                        <select class="form-select form-select-lg" name="status" id="status" >
-                            <option value="true">Ativo</option>
-                            <option value="false">Inativo</option>
+                        <label for="tipo">Tipo</label>
+                        <select class="form-select form-select-lg" name="tipo" id="tipo" >
+                            <option value="Incidente">Incidente</option>
+                            <option value="Solicitação de Serviço">Solicitação de Serviço</option>
+                            <option value="Melhoria">Melhorias</option>
+                            <option value="Projeto">Projeto</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="prioridade">Prioridade</label>
+                        <select class="form-select form-select-lg" name="prioridade" id="prioridade" >
+                            <option value="Alta">Alta</option>
+                            <option value="Média">Média</option>
+                            <option value="Baixa">Baixa</option>
+                            <option value="Sem prioridade">Sem prioridade</option>
                         </select>
                     </div>
                 </div>
@@ -39,17 +50,6 @@
                     <div class="col-md-12">
                         <label for="observation" class="form-label">Observação</label>
                         <textarea class="form-control form-control-lg" name="observation" id="observation" cols="15" rows="2"></textarea>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <label for="start_date">Início</label>
-                        <input class ="form-control form-control-lg"type="date" id="start_date" name="start_date"  />
-                    </div>
-                
-                    <div class="col-md-4">
-                        <label for="end_date">Fim</label>
-                        <input class="form-control form-control-lg" type="date" id="end_date" name="end_date"  />
                     </div>
                 </div>
                 <div class="pt-3">

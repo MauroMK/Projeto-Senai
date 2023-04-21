@@ -10,14 +10,13 @@ class Project extends Model
 {
     use HasFactory;
     protected $table = "projects";
-    protected $dates = ['start_date', 'end_date'];
     protected $fillable = [
         "name",
-        "status",
+        "tipo",
+        "prioridade",
         "observation",
         "user_id",
-        "start_date",
-        "end_date"];
+        "start_date"];
 
     public function user()
     {

@@ -23,7 +23,7 @@ class ProjectController extends Controller
         $project->fill($request->all());
         $project->save();
         $request->session()->flash('success', 'O projeto foi salvo com sucesso.');
-        return redirect()->route('project.insert');
+        return redirect()->route('project.list');
     }
 
     public function list(Request $request) {

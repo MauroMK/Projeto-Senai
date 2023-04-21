@@ -4,7 +4,7 @@
 <div class="card mx-auto">
     <div class="card-body">
         <div class="card-title">
-            <h2>Lista de Projetos</h2>
+            <h2>Lista de Tarefas</h2>
         </div>
         <div class="card-text">
             <table class="table">
@@ -12,8 +12,9 @@
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Nome</th>
-                        <th scope="col">Data Inicial</th>
-                        <th scope="col">Data Final</th>
+                        <th scope="col">Tipo</th>
+                        <th scope="col">Prioridade</th>
+                        <th scope="col">Data de abertura</th>
                         <th scope="col">Responsável</th>
                         <th scope="col">Ação</th>
                     </tr>
@@ -23,9 +24,11 @@
                     <tr>
                         <th scope="row">{{ $project->id }}</th>
                             <td>{{ $project->name }}</td>
-                            <td>{{ $project->start_date->format('d/m/Y') }}</td>
-                            <td>{{ $project->end_date->format('d/m/Y') }}</td>
+                            <td>{{ $project->tipo }}</td>
+                            <td>{{ $project->prioridade }}</td>
+                            <td>{{ $project->created_at->format('d/m/Y') }}</td>
                             <td>{{ $project->user->name }}</td>
+                            
                             <td>
                                 <a class="btn btn-warning" href="{{ route('project.edit', $project->id) }}">
                                     <i class="fa-regular fa-pen-to-square"></i>
