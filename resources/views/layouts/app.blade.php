@@ -85,7 +85,7 @@
                             </li>
                                 <li class="navbar-nav">
                                     <a class="dropdown-item" href="{{ route('user.list') }}">
-                                        {{ __('List users') }}
+                                        {{ __('Usuários') }}
                                     </a>
                                 </li>
                             </li>
