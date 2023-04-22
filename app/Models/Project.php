@@ -13,10 +13,14 @@ class Project extends Model
     protected $fillable = [
         "name",
         "descricao",
+        "observacao",
         "user_id",
         "tipo",
         "prioridade",
-        "situacao",];
+        "situacao",
+        "data_alteracao",
+        "responsavel_alteracao",
+        "finalizado"];
 
     public function user()
     {

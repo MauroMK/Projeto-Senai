@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string("tipo");
             $table->string("prioridade");
             $table->boolean("situacao")->default(true);
+            $table->boolean("finalizado")->default(false);
             $table->text("descricao")->nullable();
             $table->text("observacao")->nullable();
             $table->dateTime("data_alteracao")->nullable();

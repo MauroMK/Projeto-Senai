@@ -13,7 +13,7 @@
                 <div class="row">
                     <div class="col-md-4">
                         <label for="name">Título</label>
-                        <input class="form-control form-control-lg" type="text" id="name" name="name" />
+                        <input class="form-control form-control-lg" type="text" id="name" name="name">
                         <div class="valid-feedback">
                             Looks good!
                         </div>
@@ -42,12 +42,13 @@
                 </div>
                 <div class="row">
                     <div class="col-md-6">
-                        <label for="descricao" class="form-label">Descrição</label>
+                        <label for="descricao" class="form-label"></label>
+                        <h4>Descrição</h4>
                         <textarea class="form-control form-control-lg" name="descricao" id="descricao" maxlength="255"></textarea>
                     </div>
                 </div>
                 <div class="pt-3">
-                    <button class="btn btn-success btn-lg" type="submit">Criar</button>
+                    <button class="btn btn-success btn-lg" id="criar" type="submit">Criar</button>
                 </div>
             </form>
         </div>

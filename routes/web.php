@@ -27,7 +27,7 @@ Route::middleware(['auth'])->prefix('project')->group(function(){
     Route::put('/{project}/finish', [App\Http\Controllers\ProjectController::class, 'finish'])->name('project.finish');
     Route::get('/{project}/finishForm', [App\Http\Controllers\ProjectController::class, 'finishForm'])->name('project.finishForm');
     Route::put('/{project}', [App\Http\Controllers\ProjectController::class, 'update'])->name('project.update');
-    Route::delete('/{project}', [App\Http\Controllers\ProjectController::class, 'delete'])->name('project.delete');
+    Route::put('/{project}/finalize', [App\Http\Controllers\ProjectController::class, 'finalize'])->name('project.finalize');
 });
 
 Route::middleware(['auth'])->prefix('user')->group(function(){
@@ -37,13 +37,4 @@ Route::middleware(['auth'])->prefix('user')->group(function(){
     Route::get('/{user}', [App\Http\Controllers\UserController::class, 'edit'])->name('user.edit');
     Route::put('/{user}', [App\Http\Controllers\UserController::class, 'update'])->name('user.update');
     Route::delete('/{user}', [App\Http\Controllers\UserController::class, 'delete'])->name('user.delete');
-});
-
-Route::middleware(['auth'])->prefix('task')->group(function(){
-    Route::get('/{project}/new', [App\Http\Controllers\TaskController::class, 'insert'])->name('task.insert');
-    Route::get('/{project}', [App\Http\Controllers\TaskController::class, 'list'])->name('task.list');
-    Route::post('/{project}/store', [App\Http\Controllers\TaskController::class, 'store'])->name('task.store');
-    Route::get('/{task}/edit', [App\Http\Controllers\TaskController::class, 'edit'])->name('task.edit');
-    Route::put('/{task}/update', [App\Http\Controllers\TaskController::class, 'update'])->name('task.update');
-    Route::delete('/{task}', [App\Http\Controllers\TaskController::class, 'delete'])->name('task.delete');
 });

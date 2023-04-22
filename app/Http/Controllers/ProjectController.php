@@ -30,7 +30,7 @@ class ProjectController extends Controller
     public function list(Request $request) {
         $perPage = 10;
         $userId = auth()->user()->id;           // Armazena o id do usuário logado
-        $projects = Project::where('situacao', true)->with("user")->orderBy('id', 'DESC')->simplePaginate($perPage);
+        $projects = Project::where('finalizado', false)->with("user")->orderBy('id', 'DESC')->simplePaginate($perPage);
         return view('project.list', ['projects'=>$projects, 'userID'=>$userId]);
     }
 
@@ -68,13 +68,15 @@ class ProjectController extends Controller
         $project->situacao = false;
         $project->descricao = $validated['descricao'];
         $project->save();
-        $request->session()->flash('success', 'A tarefa foi finalizada com sucesso.');
+        $request->session()->flash('success', 'A tarefa foi concluída com sucesso.');
         return redirect()->route('project.list');
     }
 
-    public function delete(Request $request, Project $project) {
-        $project->delete();
-        $request->session()->flash('success', 'A tarefa foi excluída com sucesso.');
+    public function finalize(Request $request, Project $project) {
+        $project->fill($request->all());
+        $project->finalizado = true;
+        $project->save();
+        $request->session()->flash('success', 'A tarefa foi fechada com sucesso.');
         return redirect()->route('project.list');
     }
 

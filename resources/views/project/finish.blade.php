@@ -45,7 +45,8 @@
                 </div>
                 <div class="row">
                     <div class="col-md-5">
-                        <label for="descricao" class="form-label">Descrição</label>
+                        <label for="descricao" class="form-label"></label>
+                        <h4>Descrição Final</h4>
                         <textarea class="form-control form-control-lg" name="descricao" id="descricao" maxlength="255">{{ $project->descricao }}</textarea>
                     </div>
                         <div class="row">

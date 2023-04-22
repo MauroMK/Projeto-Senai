@@ -28,62 +28,72 @@
         <div class="card-text">
             <form method="POST" action="{{ route('project.update', $project->id) }}">
                 @csrf
-                <div class="row">
-                    <div class="col-md-3">
-                        <label for="name">Título</label>
-                        <input class="form-control form-control-lg" value="{{ $project->name }}" type="text" id="name" name="name" readonly/>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label for="name">Título</label>
+                            <input class="form-control form-control-lg" value="{{ $project->name }}" type="text" id="name" name="name" readonly/>
+                        </div>
+                        <div class="col-md-3">
+                            <ul><strong>Prioridade: </strong>{{ $project->prioridade }}</ul>
+                            <ul><strong>Tipo: </strong> {{ $project->tipo }}</ul>
+                        </div>
+                        
+                        <div class="col-md-1">
+                            <label for="start_date">Data de criação</label>
+                            <h4>{{ $project->created_at->format('d/m/Y') }}</h4>
+                        </div>
+                        <div class="col-md-1">
+                            <label for="user_id">Responsável</label>
+                            <h4>{{ $project->user->name }}</h4>
+                        </div>
+                        <div class="col-md-2">
+                            <label for="situacao">Situação</label>
+                            <h4>{{ $project->situacao ? "Aberta" : "Concluída" }}</h4>
+                        </div>
+                        
                     </div>
-                    <div class="col-md-2">
-                        <label for="tipo">Tipo: </label>
-                        <h4>{{ $project->tipo }}</h4>
+                    <div class="row">
+                        <div class="col-md-5">
+                            <label for="descricao" class="form-label"></label>
+                            <h4>Descrição</h4>
+                            <textarea class="form-control form-control-lg" name="descricao" id="descricao" maxlength="255">{{ $project->descricao }}</textarea>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="observacao" class="form-label"></label>
+                            <h4>Observação</h4>
+                            <textarea class="form-control form-control-lg" name="observacao" id="observacao" maxlength="255">{{ $project->observacao }}</textarea>
+                        </div>
+                        <div class="col d-flex flex-column justify-content-center">
+                            <h4 class="align-self-start">Ultima alteração: </h4>
+                            <h5 class="align-self-start">Usuário: {{ $project->responsavel_alteracao}} </h5>
+                            <h5 class="align-self-start">Data: {{ $project->data_alteracao }} </h5>
+                        </div>
                     </div>
-                    <div class="col-md-2">
-                        <label for="prioridade">Prioridade: </label>
-                        <h4>{{ $project->prioridade }}</h4>
-                    </div>
-                    <div class="col-md-1">
-                        <label for="start_date">Data de criação</label>
-                        <h4>{{ $project->created_at->format('d/m/Y') }}</h4>
-                    </div>
-                    <div class="col-md-1">
-                        <label for="user_id">Responsável</label>
-                        <h4>{{ $project->user->name }}</h4>
-                    </div>
-                    <div class="col-md-1">
-                        <label for="situacao">Situação</label>
-                        <h4>{{ $project->situacao ? "Aberta" : "Concluída" }}</h4>
+                    <div class="row">
+                        <div class="col-md-1 pt-2">
+                            @if ($project->situacao && $project->user_id == auth()->user()->id)
+                            <button class="btn btn-success btn-lg" type="submit">Salvar</button>
+                            @else
+                            <button class="btn btn-success btn-lg" type="submit" disabled>Salvar</button>
+                            @endif
+                        </div>
+                        <div class="col-md-1 pt-2">
+                            @if ($project->situacao && $project->user_id == auth()->user()->id)
+                                <a href="{{ route('project.finishForm', $project->id) }}" class="btn btn-primary btn-lg">Finalizar</a>
+                            @endif
+                        </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-5">
-                        <label for="descricao" class="form-label">Descrição</label>
-                        <textarea class="form-control form-control-lg" name="descricao" id="descricao" maxlength="255">{{ $project->descricao }}</textarea>
-                    </div>
-                    <div class="col-md-4">
-                        <label for="observacao" class="form-label">Observação</label>
-                        <textarea class="form-control form-control-lg" name="observacao" id="observacao" maxlength="255">{{ $project->observacao }}</textarea>
-                    </div>
-                    <div class="col d-flex flex-column justify-content-center">
-                        <h4 class="align-self-start">Ultima alteração: </h4>
-                        <h5 class="align-self-start">Usuário: {{ $project->responsavel_alteracao}} </h5>
-                        <h5 class="align-self-start">Data: {{ $project->data_alteracao }} </h5>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-1 pt-2">
-                        @if ($project->situacao && $project->user_id == auth()->user()->id)
-                        <button class="btn btn-success btn-lg" type="submit">Salvar</button>
-                        @else
-                        <button class="btn btn-success btn-lg" type="submit" disabled>Salvar</button>
-                        @endif
-                    </div>
+                @method('put')
+            </form>
+            <div class="col-md-1 pt-2">
+                @if($project->situacao == false && $project->user_id == auth()->user()->id)
+                <form method="POST" action="{{ route('project.finalize', $project->id) }}" novalidate>
+                    @csrf
                     @method('put')
-                    <div class="col-md-1 pt-2">
-                        @if ($project->situacao && $project->user_id == auth()->user()->id)
-                            <a href="{{ route('project.finishForm', $project->id) }}" class="btn btn-primary btn-lg">Finalizar</a>
-                        @endif
-                    </div>
-                </div>
+                    <button type="submit" class="btn btn-danger btn-lg">Fechar tarefa</button>
+                </form>
+                @endif
             </div>
         </div>
     </div>
